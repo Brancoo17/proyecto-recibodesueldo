@@ -46,7 +46,7 @@
                         <tbody>
                             <?php foreach ($recibos as $recibo): ?>
                             <tr>
-                                <td class="periodo-nombre">
+                                <td class="periodo-nombre" data-label="Período">
                                     <span class="icono-documento">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -68,13 +68,13 @@
                                         echo s($periodoFormateado); 
                                     ?>
                                 </td>
-                                <td class="fecha-carga">
+                                <td class="fecha-carga" data-label="Fecha de Carga">
                                     <?php 
                                         // Formatear fecha
-                                        echo s(date('d/m/Y H:i', strtotime($recibo->fecha_carga))); 
+                                        echo s(date('d/m/Y', strtotime($recibo->fecha_carga))); 
                                     ?>
                                 </td>
-                                <td class="text-right">
+                                <td class="text-right" data-label="Acción">
                                     <a href="/recibos/descargar?id=<?php echo $recibo->id; ?>" target="_blank" class="boton-ver-pdf">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-btn">
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>

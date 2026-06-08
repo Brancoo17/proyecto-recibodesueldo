@@ -143,3 +143,95 @@
         }
     }
 }
+
+// ── Mobile: tabla → tarjetas ──────────────────────────────
+@media (max-width: 600px) {
+
+    .tarjeta-recibos {
+        padding: 2rem 1.5rem;
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .tabla-contenedor {
+        border: none;
+    }
+
+    .tabla-recibos {
+        display: block;
+
+        // Ocultar encabezados — los labels van en cada celda via data-label
+        thead {
+            display: none;
+        }
+
+        tbody {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        tr {
+            display: flex;
+            flex-direction: column;
+            background-color: color.adjust(v.$negro, $lightness: 5%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            gap: 1rem;
+
+            &:hover {
+                background-color: color.adjust(v.$negro, $lightness: 7%);
+            }
+        }
+
+        td {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: none;
+            font-size: 1.4rem;
+
+            // Label a la izquierda
+            &::before {
+                content: attr(data-label);
+                color: v.$gris;
+                font-size: 1.2rem;
+                font-weight: v.$bold;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                flex-shrink: 0;
+                margin-right: 1rem;
+            }
+
+            // Período: sobreescribir el display:flex del td para que no choque con el ::before
+            &.periodo-nombre {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+
+                &::before {
+                    width: 100%;
+                }
+            }
+
+            // Botón ocupa todo el ancho
+            &.text-right {
+                justify-content: flex-end;
+
+                &::before {
+                    display: none; // el botón no necesita label
+                }
+
+                .boton-ver-pdf {
+                    width: 100%;
+                    justify-content: center;
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}

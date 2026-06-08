@@ -130,3 +130,20 @@
         align-items: center;
     }
 }
+
+// ── Mobile ────────────────────────────────────────────────
+@media (max-width: 479px) {
+
+    .grid-cuenta {
+        gap: 2rem;
+    }
+
+    .tarjeta-datos, .tarjeta-contrasena {
+        padding: 1.5rem;  // ← era 3rem, esto elimina los 32px de desborde
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+}
