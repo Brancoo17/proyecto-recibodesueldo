@@ -1,0 +1,290 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+// Sobreescribir el contenedor genérico si estamos en el panel de administración
+.app-container:has(.dashboard-admin) {
+    align-items: flex-start;
+    padding: 0;
+
+    .app {
+        max-width: 100%;
+        width: 100%;
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+}
+
+.dashboard-admin {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$negro;
+}
+
+// ----------------------------------------------------
+// BARRA SUPERIOR (HEADER)
+// ----------------------------------------------------
+.header-admin {
+    background-color: color.adjust(v.$negro, $lightness: 4%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+
+    @include m.tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2.5rem 4rem;
+    }
+
+    .header-logo {
+        h1 {
+            font-size: 2.4rem;
+            margin: 0;
+            color: v.$blanco;
+            font-weight: v.$bold;
+            text-align: center;
+
+            @include m.tablet {
+                text-align: left;
+            }
+
+            span {
+                color: v.$azul;
+                font-weight: v.$regular;
+            }
+        }
+    }
+
+    .header-usuario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        width: 100%;
+
+        @include m.telefono {
+            flex-direction: row;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        @include m.tablet {
+            width: auto;
+            justify-content: flex-end;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.6rem;
+            color: v.$gris;
+
+            strong {
+                color: v.$blanco;
+            }
+        }
+
+        .boton-cerrar {
+            background-color: transparent;
+            border: 1px solid v.$rojo;
+            color: v.$rojo;
+            padding: 0.8rem 2.2rem;
+            font-size: 1.4rem;
+            font-weight: v.$bold;
+            border-radius: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+
+            @include m.telefono {
+                width: auto;
+            }
+
+            &:hover {
+                background-color: v.$rojo;
+                color: v.$blanco;
+                box-shadow: 0 0 10px rgba(203, 0, 0, 0.4);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// ----------------------------------------------------
+// CUERPO / SECCIONES
+// ----------------------------------------------------
+.contenido-admin {
+    flex: 1;
+    padding: 4rem 2rem;
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include m.tablet {
+        padding: 6rem 4rem;
+    }
+
+    .enlace-volver {
+        margin-bottom: 3rem;
+        display: flex;
+        justify-content: flex-start;
+
+        .boton-volver {
+            color: v.$blanco;
+            background-color: v.$azul;
+            border-radius: 10px;
+            padding: 1rem 2.5rem;
+            font-size: 1.6rem;
+            font-weight: v.$bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: color.adjust(v.$azul, $lightness: -10%);
+            }
+        }
+    }
+
+    .seccion-subir {
+        background-color: color.adjust(v.$negro, $lightness: 3%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 70rem;
+        margin: 0 auto;
+
+        @include m.tablet {
+            padding: 5rem;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            color: v.$blanco;
+            font-weight: v.$bold;
+            text-align: left;
+            margin: 0 0 1.5rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid v.$azul;
+        }
+
+        .descripcion {
+            font-size: 1.5rem;
+            color: v.$gris;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+
+            strong {
+                color: v.$blanco;
+            }
+        }
+    }
+
+    .grid-admin {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        max-width: 60rem;
+        margin: 0 auto;
+    }
+
+    .tarjeta-admin-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        background-color: color.adjust(v.$negro, $lightness: 3%);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 1.5rem;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+            transform: translateY(-5px);
+            background-color: color.adjust(v.$negro, $lightness: 6%);
+            border-color: rgba(v.$azul, 0.3);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+
+            .tarjeta-cuerpo {
+                .tarjeta-icono {
+                    background-color: rgba(v.$azul, 0.15);
+                    color: v.$azul;
+                }
+                .tarjeta-texto {
+                    .tarjeta-accion {
+                        color: v.$azul;
+                        padding-left: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        .tarjeta-cuerpo {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: flex-start;
+
+            @include m.telefono {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .tarjeta-icono {
+                background-color: rgba(255, 255, 255, 0.03);
+                color: v.$gris;
+                padding: 1.8rem;
+                border-radius: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                flex-shrink: 0;
+
+                .icon-svg {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                }
+            }
+
+            .tarjeta-texto {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+
+                h3 {
+                    font-size: 2rem;
+                    color: v.$blanco;
+                    font-weight: v.$bold;
+                    text-align: left;
+                    margin: 0;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    color: v.$gris;
+                    margin: 0;
+                    line-height: 1.6;
+                }
+
+                .tarjeta-accion {
+                    font-size: 1.4rem;
+                    color: v.$gris;
+                    font-weight: v.$bold;
+                    transition: all 0.3s ease;
+                    margin-top: 0.5rem;
+                }
+            }
+        }
+    }
+}

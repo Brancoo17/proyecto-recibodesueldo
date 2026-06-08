@@ -7,6 +7,7 @@ use Controllers\LoginController;
 use Controllers\EmpleadoController;
 use Controllers\ReciboController;
 use Controllers\AdminController;
+use Controllers\LoginAdminController;
 
 $router = new Router();
 
@@ -31,9 +32,9 @@ $router->get('/recibos', [ReciboController::class, 'index']);
 $router->get('/recibos/descargar', [ReciboController::class, 'descargar']);
 
 // ── Login del ADMINISTRADOR ──
-$router->get('/admin/login', [LoginController::class, 'login']);
-$router->post('/admin/login', [LoginController::class, 'login']);
-$router->get('/admin/logout', [LoginController::class, 'logout']);
+$router->get('/admin/login', [LoginAdminController::class, 'login']);
+$router->post('/admin/login', [LoginAdminController::class, 'login']);
+$router->get('/admin/logout', [LoginAdminController::class, 'logout']);
 
 // ── Panel del ADMINISTRADOR ──
 $router->get('/admin', [AdminController::class, 'index']);

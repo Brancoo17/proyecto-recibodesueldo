@@ -1,0 +1,145 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+.tarjeta-recibos {
+    background-color: color.adjust(v.$negro, $lightness: 3%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    @include m.tablet {
+        padding: 4rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        color: v.$blanco;
+        font-weight: v.$bold;
+        text-align: left;
+        margin: 0 0 3rem 0;
+        padding-left: 1rem;
+        border-left: 4px solid v.$azul;
+    }
+}
+
+// Vacío
+.recibos-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    gap: 2rem;
+
+    .icon-vacio {
+        width: 6rem;
+        height: 6rem;
+        color: color.adjust(v.$gris, $lightness: -20%);
+    }
+
+    p {
+        font-size: 1.6rem;
+        color: v.$gris;
+        margin: 0;
+    }
+}
+
+// Tabla responsiva
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tabla-recibos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.5rem;
+    text-align: left;
+
+    th, td {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    th {
+        color: v.$gris;
+        font-weight: v.$bold;
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: color.adjust(v.$negro, $lightness: 1.5%);
+    }
+
+    tr {
+        transition: background-color 0.3s ease;
+
+        &:last-child td {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.015);
+        }
+    }
+
+    .periodo-nombre {
+        color: v.$blanco;
+        font-weight: v.$bold;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .icono-documento {
+            color: v.$azul;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            svg {
+                width: 2.2rem;
+                height: 2.2rem;
+            }
+        }
+    }
+
+    .fecha-carga {
+        color: v.$gris;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .boton-ver-pdf {
+        background-color: transparent;
+        border: 1px solid v.$azul;
+        color: v.$azul;
+        padding: 0.8rem 1.6rem;
+        font-size: 1.3rem;
+        font-weight: v.$bold;
+        border-radius: 0.8rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: v.$azul;
+            color: v.$blanco;
+            box-shadow: 0 0 8px rgba(13, 166, 243, 0.4);
+            cursor: pointer;
+        }
+
+        .icon-btn {
+            width: 1.6rem;
+            height: 1.6rem;
+        }
+    }
+}

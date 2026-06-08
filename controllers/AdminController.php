@@ -10,7 +10,7 @@ class AdminController {
 
     // Verificar sesión de admin en cada método
     private static function verificarSesion(): void {
-        session_start();
+        if(!isset($_SESSION)) session_start();
         if (!isset($_SESSION['admin'])) {
             header('Location: /admin/login');
             exit;
@@ -80,7 +80,7 @@ class AdminController {
             }
 
             // El nombre sin extensión debe ser un DNI numérico (7 u 8 dígitos)
-            $dni = pathinfo($nombreOriginal, PATHINFO_FILENAME);
+            $dni = trim(pathinfo($nombreOriginal, PATHINFO_FILENAME));
             if (!preg_match('/^\d{7,8}$/', $dni)) {
                 $errores[] = "$nombreOriginal: el nombre no corresponde a un DNI válido.";
                 continue;
@@ -96,10 +96,11 @@ class AdminController {
             // Registrar en la BD
             // Si ya existe el registro para ese DNI y período, solo sobreescribimos el archivo (ya fue reemplazado arriba)
             if (!Recibo::existePeriodo($dni, $periodo)) {
-                $recibo           = new Recibo();
-                $recibo->dni      = $dni;
-                $recibo->periodo  = $periodo;
-                $recibo->archivo  = "recibos/{$periodo}/{$nombreOriginal}";
+                $recibo = new Recibo();
+                $recibo->dni = $dni;
+                $recibo->periodo = $periodo;
+                $recibo->archivo = "recibos/{$periodo}/{$nombreOriginal}";
+                $recibo->fecha_carga = date('Y-m-d H:i:s'); // ← Fecha y hora actual
                 $recibo->guardar();
             }
 

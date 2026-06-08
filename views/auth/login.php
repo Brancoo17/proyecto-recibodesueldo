@@ -28,5 +28,5 @@
 
 <div class="acciones">
     <a href="/crear-cuenta">¿No tienes una cuenta? Crear una</a>
-    <a href="/admin-login">Ingresar como administrador</a>
+    <a href="/admin/login">Ingresar como administrador</a>
 </div>

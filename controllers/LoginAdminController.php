@@ -35,7 +35,7 @@ class LoginAdminController {
             }
         }
 
-        $router->render('admin/login', ['alertas' => $alertas]);
+        $router->render('/admin/login', ['alertas' => $alertas]);
     }
 
     public static function logout() {

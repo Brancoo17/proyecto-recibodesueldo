@@ -39,6 +39,7 @@ class LoginController {
                         $_SESSION['id'] = $empleado->id;
                         $_SESSION['nombre'] = $empleado->nombre . " " . $empleado->apellido;
                         $_SESSION['dni'] = $empleado->dni;
+                        $_SESSION['empleado'] = $empleado->dni;
                         $_SESSION['login'] = true;
 
                         // Redireccionar al usuario

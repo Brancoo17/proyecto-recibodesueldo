@@ -63,5 +63,5 @@
 
 <div class="acciones">
     <a href="/">¿Ya tienes cuenta? Iniciar Sesión</a>
-    <a href="/admin-login">Ingresar como administrador</a>
+    <a href="/admin/login">Ingresar como administrador</a>
 </div>

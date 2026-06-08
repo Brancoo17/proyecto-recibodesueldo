@@ -1,17 +1,15 @@
-<?php /** @var Model\Administrador $auth */ ?>
-
 <h1 class="nombre-pagina">Iniciar Sesión</h1>
-<p class="descripcion-pagina">Inicia Sesión con tu cuenta</p>
+<p class="descripcion-pagina">Inicia Sesión como Administrador</p>
 
 <?php
     include_once __DIR__ . "/../templates/alertas.php";
 ?>
 
-<form action="/" method="POST" class="formulario">
+<form action="/admin/login" method="POST" class="formulario">
 
     <div class="campo">
         <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Ingresa tu Email" name="email" value="<?php echo s($auth->email); ?>">
+        <input type="email" id="email" placeholder="Ingresa tu Email" name="email">
     </div>
 
     <div class="campo">
