@@ -5,6 +5,8 @@ require_once __DIR__ . '/../includes/app.php';
 use MVC\Router;
 use Controllers\LoginController;
 use Controllers\EmpleadoController;
+use Controllers\ReciboController;
+use Controllers\AdminController;
 
 $router = new Router();
 
@@ -21,9 +23,22 @@ $router->post('/crear-cuenta', [LoginController::class, 'crear']);
 
 // Empleado
 $router->get('/empleado', [EmpleadoController::class, 'index']);
-$router->get('/empleado/recibos', [EmpleadoController::class, 'recibos']);
 $router->get('/empleado/cuenta', [EmpleadoController::class, 'cuenta']);
 $router->post('/empleado/cuenta', [EmpleadoController::class, 'cuenta']);
+
+// ── Recibos del EMPLEADO ──
+$router->get('/recibos', [ReciboController::class, 'index']);
+$router->get('/recibos/descargar', [ReciboController::class, 'descargar']);
+
+// ── Login del ADMINISTRADOR ──
+$router->get('/admin/login', [LoginController::class, 'login']);
+$router->post('/admin/login', [LoginController::class, 'login']);
+$router->get('/admin/logout', [LoginController::class, 'logout']);
+
+// ── Panel del ADMINISTRADOR ──
+$router->get('/admin', [AdminController::class, 'index']);
+$router->get('/admin/recibos/subir', [AdminController::class, 'subirRecibos']);
+$router->post('/admin/recibos/subir', [AdminController::class, 'procesarRecibos']);
 
 
 
