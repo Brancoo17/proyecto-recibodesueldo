@@ -46,9 +46,12 @@
         @include m.tablet {
             flex-direction: row;
             justify-content: space-between;
-            padding: 0 4rem;
-        }
+            padding: 2.5rem 4rem;
 
+            &.index {
+                padding: 0 4rem;
+            }
+        }
         .header-logo {
             h1 {
                 font-size: 2.4rem;

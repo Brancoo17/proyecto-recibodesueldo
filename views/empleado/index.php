@@ -4,7 +4,7 @@
 
 <div class="dashboard-empleado">
     <!-- BARRA SUPERIOR -->
-    <header class="header-empleado">
+    <header class="header-empleado index">
         <div class="header-logo">
             <h1>Recibos WEB <span>/ <?php echo s($empleado->empresa); ?></span></h1>
         </div>
