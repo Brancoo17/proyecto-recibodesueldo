@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 6rem 2rem; // Más espacio en los bordes de la pantalla
+
+    .app {
+        width: 100%;
+        max-width: 55rem; // Un poco más ancho para dar respiro
+        margin: 0 auto;
+        padding: 4rem; // Padding generoso en móviles
+        background-color: color.adjust(v.$negro, $lightness: 4%); // Fondo ligeramente más claro que el body
+        border-radius: 2rem; // Bordes redondeados modernos
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); // Sombra elegante
+        border: 1px solid rgba(255, 255, 255, 0.05); // Sutil borde brillante para dar relieve
+
+        @include m.tablet {
+            padding: 6rem; // Aún más espacio interno en pantallas grandes
+        }
+    }
+}

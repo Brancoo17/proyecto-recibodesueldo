@@ -1,0 +1,18 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.acciones {
+    margin-top: 2rem; // Menos espacio superior redundante
+    
+    a {
+        color: v.$blanco;
+        display: block;
+        margin-bottom: 1.5rem; // Espacio más equilibrado en móviles
+        text-align: center;
+        text-decoration: none;
+        
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

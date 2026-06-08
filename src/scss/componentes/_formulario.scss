@@ -1,0 +1,109 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+.formulario {
+    margin-top: 4rem; // Más espacio superior
+    width: 100%;
+
+    .boton {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.campo {
+    display: flex;
+    flex-direction: column; // Apilado por defecto para más espacio y claridad
+    gap: 1rem; // Separación entre la etiqueta y el input
+    margin-bottom: 3rem; // Separación generosa entre campos
+
+    label {
+        font-size: 1.8rem;
+        color: v.$blanco;
+        font-weight: v.$bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 1.5rem;
+        border: 1px solid color.adjust(v.$negro, $lightness: 15%); // Borde sutil
+        background-color: color.adjust(v.$negro, $lightness: 2%); // Fondo oscuro integrado
+        color: v.$blanco;
+        font-size: 1.6rem;
+        border-radius: 1rem;
+        transition: border-color .3s ease, background-color .3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: v.$azul; // Brillo azul al hacer foco
+            background-color: color.adjust(v.$negro, $lightness: 5%);
+        }
+
+        &:disabled {
+            background-color: v.$gris;
+            color: v.$negro;
+            cursor: not-allowed;
+        }
+    }
+
+    select {
+        padding: 1.5rem;
+        border: 1px solid color.adjust(v.$negro, $lightness: 15%); // Borde sutil
+        background-color: color.adjust(v.$negro, $lightness: 2%); // Fondo oscuro integrado
+        color: v.$blanco;
+        font-size: 1.6rem;
+        border-radius: 1rem;
+        transition: border-color .3s ease, background-color .3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: v.$azul; // Brillo azul al hacer foco
+            background-color: color.adjust(v.$negro, $lightness: 5%);
+        }
+
+        &:disabled {
+            background-color: v.$gris;
+            color: v.$negro;
+            cursor: not-allowed;
+        }
+    }
+
+    .campo-password {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        input {
+            padding-right: 5rem; // Espacio a la derecha para que el texto de la contraseña no tape el ojo
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: v.$gris;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: v.$azul;
+            }
+
+            // Estilos para el SVG interno
+            .icon-svg {
+                width: 2.2rem;
+                height: 2.2rem;
+                pointer-events: none; // Permite hacer click a través del SVG hacia el botón
+            }
+        }
+
+    }
+}
+

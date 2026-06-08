@@ -1,0 +1,132 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use 'sass:color';
+
+.enlace-volver {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: flex-start;
+
+    .boton-volver {
+        color: v.$blanco;
+        background-color: v.$azul;
+        border-radius: 10px;
+        font-size: 1.6rem;
+        font-weight: v.$bold;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            background-color: color.adjust(v.$azul, $lightness: -10%);
+            color: v.$blanco;
+        }
+    }
+}
+
+.grid-cuenta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    @include m.tablet {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+// Tarjetas en la vista Cuenta
+.tarjeta-datos, .tarjeta-contrasena {
+    background-color: color.adjust(v.$negro, $lightness: 3%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    @include m.tablet {
+        padding: 4rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        color: v.$gris;
+        font-weight: v.$bold;
+        text-align: left;
+        margin: 0 0 2rem 0;
+        padding-left: 1rem;
+        border-left: 4px solid v.$azul;
+    }
+
+    .tarjeta-cuerpo {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        h3 {
+            font-size: 1.8rem;
+            color: v.$blanco;
+            margin: 0;
+            text-align: left;
+        }
+
+        .instruccion-datos {
+            font-size: 1.4rem;
+            color: color.adjust(v.$gris, $lightness: -15%);
+            margin: 0;
+            line-height: 1.6;
+        }
+    }
+}
+
+// Campos de lectura de datos personales
+.campo-lectura {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1.5rem;
+
+    &:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .etiqueta {
+        font-size: 1.4rem;
+        color: v.$gris;
+        font-weight: v.$bold;
+    }
+
+    .valor {
+        font-size: 1.6rem;
+        color: v.$blanco;
+        word-break: break-all;
+    }
+}
+
+// Formulario de contraseña
+.formulario-cuenta {
+    margin-top: 1rem;
+
+    .campo {
+        margin-bottom: 2.5rem;
+        
+        input {
+            background-color: color.adjust(v.$negro, $lightness: 1%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            
+            &:focus {
+                border-color: v.$azul;
+                background-color: color.adjust(v.$negro, $lightness: 4%);
+            }
+        }
+    }
+
+    .boton {
+        margin-top: 2rem;
+        margin-bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
