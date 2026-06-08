@@ -4,7 +4,7 @@
 
 // Sobreescribir el contenedor genérico si estamos en el dashboard de empleado
 .app-container:has(.dashboard-empleado) {
-    align-items: flex-start;
+    align-items: center;
     padding: 0;
 
     .app {
@@ -21,230 +21,244 @@
 .dashboard-empleado {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     background-color: v.$negro;
-}
 
-// ----------------------------------------------------
-// BARRA SUPERIOR (HEADER)
-// ----------------------------------------------------
-.header-empleado {
-    background-color: color.adjust(v.$negro, $lightness: 4%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    width: 100%;
-
-    @include m.tablet {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 2.5rem 4rem;
+    .enlace-volver {
+        margin-left: 2rem;
     }
 
-    .header-logo {
-        h1 {
-            font-size: 2.4rem;
-            margin: 0;
-            color: v.$blanco;
-            font-weight: v.$bold;
-            text-align: center;
 
-            @include m.tablet {
-                text-align: left;
-            }
-
-            span {
-                color: v.$azul;
-                font-weight: v.$regular;
-            }
-        }
-    }
-
-    .header-usuario {
+    // ----------------------------------------------------
+    // BARRA SUPERIOR (HEADER)
+    // ----------------------------------------------------
+    .header-empleado {
+        background-color: color.adjust(v.$negro, $lightness: 4%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 2.5rem 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.2rem;
+        gap: 1.5rem;
         width: 100%;
 
-        @include m.telefono {
-            flex-direction: row;
-            justify-content: space-between;  // ← era center, ahora separa nombre y botón
-            width: 100%;
-        }
-
         @include m.tablet {
-            width: auto;
-            justify-content: flex-end;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 4rem;
         }
 
-        p {
-            margin: 0;
-            font-size: 1.6rem;
-            color: v.$gris;
-
-            strong {
+        .header-logo {
+            h1 {
+                font-size: 2.4rem;
+                margin: 0;
                 color: v.$blanco;
+                font-weight: v.$bold;
+                text-align: center;
+
+                @include m.tablet {
+                    text-align: left;
+                }
+
+                span {
+                    color: v.$azul;
+                    font-weight: v.$regular;
+                }
             }
         }
 
-        .boton-cerrar {
-            background-color: transparent;
-            border: 1px solid v.$rojo;
-            color: v.$rojo;
-            padding: 0.8rem 2.2rem;
-            font-size: 1.4rem;
-            font-weight: v.$bold;
-            border-radius: 0.8rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            text-align: center;
-            display: inline-block;
+        .header-usuario {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
             width: 100%;
+            padding: 1rem 0;
+
+            
 
             @include m.telefono {
-                width: auto;
+                flex-direction: row;
+                justify-content: space-between;  // ← era center, ahora separa nombre y botón
+                width: 100%;
             }
 
-            &:hover {
-                background-color: v.$rojo;
-                color: v.$blanco;
-                box-shadow: 0 0 10px rgba(203, 0, 0, 0.4);
-                cursor: pointer;
+            @include m.tablet {
+                width: auto;
+                justify-content: flex-end;
+            }
+
+            p {
+                margin: 0;
+                font-size: 1.6rem;
+                color: v.$gris;
+
+                strong {
+                    color: v.$blanco;
+                }
+            }
+
+            .boton-cerrar {
+                background-color: transparent;
+                border: 1px solid v.$rojo;
+                color: v.$rojo;
+                padding: 0.8rem 2.2rem;
+                font-size: 1.4rem;
+                font-weight: v.$bold;
+                border-radius: 0.8rem;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                text-align: center;
+                display: inline-block;
+                width: 100%;
+
+                @media (max-width: 600px) {
+                    margin-top: 2rem;
+                    margin-left: 2rem;
+                }
+                
+
+                @include m.telefono {
+                    width: auto;
+                }
+
+                &:hover {
+                    background-color: v.$rojo;
+                    color: v.$blanco;
+                    box-shadow: 0 0 10px rgba(203, 0, 0, 0.4);
+                    cursor: pointer;
+                }
             }
         }
     }
-}
 
-// ----------------------------------------------------
-// CUERPO / SECCIONES
-// ----------------------------------------------------
-.contenido-empleado {
-    flex: 1;
-    padding: 4rem 2rem;
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    @include m.tablet {
-        padding: 6rem 4rem;
-    }
-
-    .grid-secciones {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
+    // ----------------------------------------------------
+    // CUERPO / SECCIONES
+    // ----------------------------------------------------
+    .contenido-empleado {
+        flex: 1;
+        padding: 4rem 2rem;
+        width: 95%;
+        max-width: 1200px;
+        margin: 0 auto;
 
         @include m.tablet {
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-    }
-
-    .seccion-tarjeta {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-
-        h2 {
-            font-size: 2.2rem;
-            color: v.$gris;
-            font-weight: v.$bold;
-            text-align: left;
-            margin: 0;
-            padding-left: 1rem;
-            border-left: 4px solid v.$azul;
+            padding: 6rem 4rem;
         }
 
-        .tarjeta-enlace {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            background-color: color.adjust(v.$negro, $lightness: 3%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .grid-secciones {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
 
-            &:hover {
-                transform: translateY(-5px);
-                background-color: color.adjust(v.$negro, $lightness: 6%);
-                border-color: rgba(v.$azul, 0.3);
-                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+            @include m.tablet {
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+            }
+        }
 
-                .tarjeta-cuerpo {
-                    .tarjeta-icono {
-                        background-color: rgba(v.$azul, 0.15);
-                        color: v.$azul;
-                    }
-                    .tarjeta-texto {
-                        .tarjeta-accion {
+        .seccion-tarjeta {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            h2 {
+                font-size: 2.2rem;
+                color: v.$gris;
+                font-weight: v.$bold;
+                text-align: left;
+                margin: 0;
+                padding-left: 1rem;
+                border-left: 4px solid v.$azul;
+            }
+
+            .tarjeta-enlace {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+                background-color: color.adjust(v.$negro, $lightness: 3%);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 1.5rem;
+                transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+                &:hover {
+                    transform: translateY(-5px);
+                    background-color: color.adjust(v.$negro, $lightness: 6%);
+                    border-color: rgba(v.$azul, 0.3);
+                    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+
+                    .tarjeta-cuerpo {
+                        .tarjeta-icono {
+                            background-color: rgba(v.$azul, 0.15);
                             color: v.$azul;
-                            padding-left: 0.5rem;
+                        }
+                        .tarjeta-texto {
+                            .tarjeta-accion {
+                                color: v.$azul;
+                                padding-left: 0.5rem;
+                            }
                         }
                     }
                 }
-            }
 
-            .tarjeta-cuerpo {
-                padding: 3rem;
-                display: flex;
-                flex-direction: column;
-                gap: 2rem;
-                align-items: flex-start;
-
-                @include m.telefono {
-                    flex-direction: row;
-                    align-items: center;
-                }
-
-                .tarjeta-icono {
-                    background-color: rgba(255, 255, 255, 0.03);
-                    color: v.$gris;
-                    padding: 1.8rem;
-                    border-radius: 1.2rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    transition: all 0.3s ease;
-                    flex-shrink: 0;
-
-                    .icon-svg {
-                        width: 3.5rem;
-                        height: 3.5rem;
-                    }
-                }
-
-                .tarjeta-texto {
+                .tarjeta-cuerpo {
+                    padding: 3rem;
                     display: flex;
                     flex-direction: column;
-                    gap: 0.8rem;
+                    gap: 2rem;
+                    align-items: flex-start;
 
-                    h3 {
-                        font-size: 2rem;
-                        color: v.$blanco;
-                        font-weight: v.$bold;
-                        text-align: left;
-                        margin: 0;
+                    @include m.telefono {
+                        flex-direction: row;
+                        align-items: center;
                     }
 
-                    p {
-                        font-size: 1.5rem;
+                    .tarjeta-icono {
+                        background-color: rgba(255, 255, 255, 0.03);
                         color: v.$gris;
-                        margin: 0;
-                        line-height: 1.6;
-                    }
-
-                    .tarjeta-accion {
-                        font-size: 1.4rem;
-                        color: v.$gris;
-                        font-weight: v.$bold;
+                        padding: 1.8rem;
+                        border-radius: 1.2rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         transition: all 0.3s ease;
-                        margin-top: 0.5rem;
+                        flex-shrink: 0;
+
+                        .icon-svg {
+                            width: 3.5rem;
+                            height: 3.5rem;
+                        }
+                    }
+
+                    .tarjeta-texto {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.8rem;
+
+                        h3 {
+                            font-size: 2rem;
+                            color: v.$blanco;
+                            font-weight: v.$bold;
+                            text-align: left;
+                            margin: 0;
+                        }
+
+                        p {
+                            font-size: 1.5rem;
+                            color: v.$gris;
+                            margin: 0;
+                            line-height: 1.6;
+                        }
+
+                        .tarjeta-accion {
+                            font-size: 1.4rem;
+                            color: v.$gris;
+                            font-weight: v.$bold;
+                            transition: all 0.3s ease;
+                            margin-top: 0.5rem;
+                        }
                     }
                 }
             }

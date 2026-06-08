@@ -41,19 +41,19 @@
     </div>
 
     <div class="campo">
-        <label for="password">Password:</label>
+        <label for="password">Contraseña:</label>
 
         <div class="campo-password">
-            <input type="password" id="password" name="password" placeholder="Tu Password">
+            <input type="password" id="password" name="password" placeholder="Tu Contraseña">
             <button type="button" class="toggle-password" data-target="password"></button>
         </div>
     </div>
 
     <div class="campo">
-        <label for="password2">Confirmar Password:</label>
+        <label for="password2">Confirmar Contraseña:</label>
 
         <div class="campo-password">
-            <input type="password" id="password2" name="password2" placeholder="Confirmar Password">
+            <input type="password" id="password2" name="password2" placeholder="Confirmar Contraseña">
             <button type="button" class="toggle-password" data-target="password2"></button>
         </div>
     </div>

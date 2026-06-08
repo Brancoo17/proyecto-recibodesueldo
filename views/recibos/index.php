@@ -9,7 +9,7 @@
         <div class="header-logo">
             <h1>Recibos WEB <span>/ <?php echo s($empleado->empresa); ?></span></h1>
         </div>
-        <div class="header-usuario">
+        <div class="header-usuario recibos">
             <p>Hola, <strong><?php echo s($empleado->nombre . ' ' . $empleado->apellido); ?></strong></p>
             <a href="/logout" class="boton-cerrar">Cerrar Sesión</a>
         </div>
